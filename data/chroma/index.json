@@ -1,0 +1,10 @@
+{
+  "collection": "mf_faq_allminilml6v2_v1",
+  "persist_dir": "data/chroma",
+  "distance": "cosine",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dim": 384,
+  "count": 67,
+  "built_at": "2026-11-02T05:45:04.777757+00:00",
+  "vectors_sha256": "f88806b83169e0d0cd9856efe510a55ca5e339912da82dccfc93c878480a453d"
+}

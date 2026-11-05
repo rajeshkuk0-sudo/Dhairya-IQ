@@ -1,0 +1,83 @@
+{
+  "d113c7fb8a674c45": {
+    "strategy": "recursive",
+    "rationale": "narrative text without tables/headings",
+    "n_chunks": 1,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "aa24b8b799ed65d8": {
+    "strategy": "recursive",
+    "rationale": "narrative text without tables/headings",
+    "n_chunks": 3,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "4c7c02db1eb840b3": {
+    "strategy": "recursive",
+    "rationale": "narrative text without tables/headings",
+    "n_chunks": 1,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "1c0f86f12936608e": {
+    "strategy": "table",
+    "rationale": "5 table rows detected",
+    "n_chunks": 8,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "b5ddfac419d1bd80": {
+    "strategy": "section",
+    "rationale": "structured key-facts block present",
+    "n_chunks": 8,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "2582725fc091dfbc": {
+    "strategy": "section",
+    "rationale": "structured key-facts block present",
+    "n_chunks": 11,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "eb012e88a1ea9416": {
+    "strategy": "section",
+    "rationale": "structured key-facts block present",
+    "n_chunks": 7,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "26c6518ff8f98713": {
+    "strategy": "section",
+    "rationale": "structured key-facts block present",
+    "n_chunks": 10,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  },
+  "fc40fea9e9b3ee5a": {
+    "strategy": "section",
+    "rationale": "structured key-facts block present",
+    "n_chunks": 18,
+    "params": {
+      "chunk_size": 800,
+      "chunk_overlap": 120
+    }
+  }
+}

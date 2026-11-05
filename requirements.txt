@@ -1,0 +1,13 @@
+streamlit
+httpx
+beautifulsoup4
+trafilatura
+pydantic>=2
+PyYAML
+python-dotenv
+tenacity
+sentence-transformers
+chromadb
+numpy
+pandas
+pytest
