@@ -14,6 +14,9 @@ dist/
 !.env.example
 .streamlit/secrets.toml
 
+# Vercel CLI
+.vercel/
+
 # Generated / rebuildable artifacts
 data/embeddings/
 data/runs/

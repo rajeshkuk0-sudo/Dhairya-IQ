@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dhairya-IQ facts-only HDFC mutual fund FAQ assistant">
+  <title>Dhairya-IQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006c4f;
+      --primary-container: #00d09c;
+      --on-primary-container: #00533c;
+      --secondary-container: #99efe5;
+      --on-secondary-container: #006f67;
+      --surface: #faf8ff;
+      --surface-low: #f2f3ff;
+      --surface-container: #eaedff;
+      --surface-high: #e2e7ff;
+      --on-surface: #131b2e;
+      --on-surface-variant: #3c4a43;
+      --outline: #6b7b72;
+      --outline-variant: #bacac1;
+      --answer-bg: #032e22;
+      --answer-fg: #2fe0aa;
+      --danger: #b3261e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Hanken Grotesk', sans-serif;
+      background: var(--surface);
+      color: var(--on-surface);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, textarea { font: inherit; }
+    a { color: var(--primary); }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .sidebar {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: 288px;
+      background: #ffffff;
+      border-right: 1px solid var(--surface-container);
+      padding: 0.9rem 0.85rem 1rem;
+      overflow-y: auto;
+      z-index: 30;
+    }
+    .side-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--surface-container);
+      padding-bottom: 0.9rem;
+      margin-bottom: 0.65rem;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .brand-icon .material-symbols-outlined { font-size: 20px; }
+    .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--on-surface);
+    }
+    .brand-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .side-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--outline);
+      margin: 0.7rem 0 0.4rem;
+      padding: 0 0.35rem 0.2rem;
+    }
+    .side-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      border-radius: 8px;
+      color: var(--on-surface);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 0.35rem 0.5rem;
+      min-height: 2rem;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+    .side-btn:hover, .side-btn:focus-visible {
+      background: var(--surface-low);
+      color: var(--primary);
+      outline: none;
+    }
+    .side-expander { border: 0; }
+    .side-expander summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.3rem 0.35rem;
+      border-radius: 8px;
+      color: var(--outline);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+    }
+    .side-expander summary::-webkit-details-marker { display: none; }
+    .side-expander summary:hover { background: var(--surface-low); color: var(--primary); }
+    .side-expander[open] summary { color: var(--primary); }
+    .side-expander .chevron { font-size: 16px; transition: transform 0.2s ease; }
+    .side-expander[open] .chevron { transform: rotate(180deg); }
+    .side-expander-body { padding-top: 0.15rem; }
+    .side-footer {
+      background: var(--surface-low);
+      border-top: 1px solid var(--surface-container);
+      border-radius: 10px;
+      padding: 0.8rem;
+      margin-top: 1rem;
+    }
+    .side-footer .row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+    .side-footer .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .side-footer .avatar .material-symbols-outlined { font-size: 17px; }
+    .side-footer .title { font-size: 12px; font-weight: 700; line-height: 1.1; }
+    .side-footer .sub { font-size: 11px; font-weight: 600; color: var(--primary); }
+    .side-footer p {
+      margin: 0.35rem 0 0;
+      font-size: 11px;
+      line-height: 1.35;
+      color: var(--outline);
+    }
+
+    .main { margin-left: 288px; min-height: 100vh; }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 9rem;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      background: rgba(242, 243, 255, 0.75);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      margin-bottom: 1.35rem;
+    }
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--on-surface-variant);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .status-left .material-symbols-outlined { font-size: 16px; color: var(--primary); }
+    .status-badge {
+      background: rgba(0, 208, 156, 0.18);
+      color: var(--on-primary-container);
+      border-radius: 999px;
+      padding: 0.2rem 0.55rem;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .welcome-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      padding: 1.35rem;
+      margin-bottom: 1.2rem;
+    }
+    .welcome-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .welcome-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.2rem;
+    }
+    .welcome-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .welcome-icon .material-symbols-outlined { font-size: 20px; }
+    .welcome-title-row h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 30px;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .welcome-card p {
+      margin: 0.25rem 0 0;
+      max-width: 760px;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--on-surface-variant);
+    }
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .verified-pill .material-symbols-outlined { font-size: 14px; }
+    .examples-label {
+      margin: 0.9rem 0 0.4rem;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--outline);
+    }
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .example-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      white-space: normal;
+      min-height: 2.6rem;
+      background: var(--surface-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: 999px;
+      color: var(--on-surface);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+    .example-btn:hover, .example-btn:focus-visible {
+      background: var(--surface-container);
+      border-color: var(--outline-variant);
+      color: var(--primary);
+      outline: none;
+    }
+
+    .chat { display: flex; flex-direction: column; }
+    .thread-question {
+      margin: 1.1rem 0 0.5rem;
+      font-size: 18px;
+      line-height: 26px;
+      font-weight: 600;
+      color: var(--on-surface);
+      overflow-wrap: anywhere;
+    }
+    .thread-you { font-weight: 700; margin-right: 0.4rem; }
+    .answer-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .refusal-card { border-left: 4px solid var(--outline); }
+    .assistant-head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.8rem;
+    }
+    .assistant-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .assistant-icon .material-symbols-outlined { font-size: 21px; }
+    .assistant-name {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .assistant-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--outline);
+      margin-top: 0.15rem;
+    }
+    .answer-bubble {
+      border-radius: 12px;
+      background: var(--answer-bg);
+      color: var(--answer-fg);
+      padding: 1rem 1.2rem;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+    .refusal-bubble {
+      border-radius: 12px;
+      background: var(--surface-low);
+      color: var(--on-surface);
+      padding: 0.9rem 1.1rem;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+    .privacy-notice {
+      background: rgba(153, 239, 229, 0.4);
+      color: var(--on-secondary-container);
+      border-radius: 10px;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .answer-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-top: 1px solid var(--surface-low);
+      margin-top: 0.75rem;
+      padding-top: 0.6rem;
+      font-size: 11px;
+      color: var(--outline);
+    }
+    .answer-meta .source {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .answer-meta a {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: underline;
+      overflow-wrap: anywhere;
+    }
+    .pending-card {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: var(--on-surface-variant);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--surface-container);
+      border-top-color: var(--primary);
+      animation: spin 0.8s linear infinite;
+      flex: 0 0 auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border-left: 4px solid var(--danger);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .error-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--danger);
+      margin-bottom: 0.35rem;
+    }
+    .error-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--on-surface-variant);
+      overflow-wrap: anywhere;
+    }
+
+    .composer {
+      position: fixed;
+      left: 288px;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      padding: 1rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, var(--surface) 55%, rgba(250, 248, 255, 0));
+    }
+    .composer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      background: #ffffff;
+      border: 1px solid var(--outline-variant);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(19, 27, 46, 0.10);
+      padding: 0.35rem;
+    }
+    .composer textarea {
+      flex: 1;
+      resize: none;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: var(--on-surface);
+      caret-color: var(--primary);
+      font-size: 14px;
+      line-height: 1.4;
+      padding: 0.55rem 0.7rem;
+      min-height: 2.4rem;
+      max-height: 8rem;
+    }
+    .composer textarea::placeholder { color: var(--outline); opacity: 1; }
+    .send-btn {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--surface-low);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    .send-btn:hover { background: var(--surface-container); }
+    .send-btn:disabled { background: var(--surface-container); color: var(--outline); cursor: not-allowed; }
+    .send-btn .material-symbols-outlined { font-size: 20px; }
+
+    .mobile-bar { display: none; }
+    .backdrop { display: none; }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.22s ease;
+        box-shadow: 0 10px 40px rgba(19, 27, 46, 0.18);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(19, 27, 46, 0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+        z-index: 25;
+      }
+      .backdrop.open { opacity: 1; pointer-events: auto; }
+      .main { margin-left: 0; }
+      .composer { left: 0; padding: 0.75rem 1rem 1rem; }
+      .mobile-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        background: rgba(250, 248, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--surface-container);
+        padding: 0.55rem 0.9rem;
+      }
+      .menu-btn {
+        border: 0;
+        background: transparent;
+        color: var(--on-surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .menu-btn:hover { background: var(--surface-low); }
+      .mobile-title { font-size: 15px; font-weight: 700; }
+      .container { padding: 1rem 1rem 8rem; }
+      .examples-grid { grid-template-columns: 1fr; }
+      .welcome-title-row h1 { font-size: 20px; line-height: 26px; }
+      .answer-bubble { font-size: 16px; }
+      .thread-question { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+    <div class="side-brand">
+      <div class="brand-icon"><span class="material-symbols-outlined">account_balance</span></div>
+      <div>
+        <div class="brand-name" id="brandName">Dhairya-IQ</div>
+        <div class="brand-sub">Your FAQ Assistant</div>
+      </div>
+    </div>
+
+    <details class="side-expander">
+      <summary>
+        <span>Supported Schemes (<span id="schemeCount">5</span>)</span>
+        <span class="material-symbols-outlined chevron">expand_more</span>
+      </summary>
+      <div class="side-expander-body" id="schemeList"></div>
+    </details>
+
+    <div class="side-label">FAQ Quick Topics</div>
+    <div id="topicList"></div>
+
+    <div class="side-footer">
+      <div class="row">
+        <div class="avatar"><span class="material-symbols-outlined">verified_user</span></div>
+        <div>
+          <div class="title">Statutory Notice</div>
+          <div class="sub">Facts-Only Policy</div>
+        </div>
+      </div>
+      <p>Public official Groww/AMC pages only. No advice, no portfolio claims, zero PII.</p>
+    </div>
+  </aside>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <main class="main">
+    <div class="mobile-bar">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="mobile-title">Dhairya-IQ</span>
+    </div>
+
+    <div class="container">
+      <div class="status-bar">
+        <div class="status-left">
+          <span class="material-symbols-outlined">shield</span>
+          <span>HDFC Mutual Fund Scheme Facts &amp; FAQ Assistant (5 HDFC Schemes)</span>
+        </div>
+        <span class="status-badge">Facts-only · No investment advice · 1 Official Source per answer</span>
+      </div>
+
+      <section class="welcome-card">
+        <div class="welcome-head">
+          <div>
+            <div class="welcome-title-row">
+              <div class="welcome-icon"><span class="material-symbols-outlined">search_insights</span></div>
+              <h1>Welcome to Your Mutual Fund Facts Assistant</h1>
+            </div>
+            <p>Ask factual queries about expense ratios, exit loads, minimum SIP, lock-in periods, or statement guides for the supported HDFC schemes.</p>
+          </div>
+          <span class="verified-pill">
+            <span class="material-symbols-outlined">verified</span>
+            Facts-only. No investment advice.
+          </span>
+        </div>
+        <div class="examples-label">Try example inquiries</div>
+        <div class="examples-grid" id="exampleList"></div>
+      </section>
+
+      <div class="chat" id="chat" aria-live="polite"></div>
+    </div>
+
+    <form class="composer" id="composer">
+      <div class="composer-inner">
+        <textarea
+          id="input"
+          rows="1"
+          maxlength="512"
+          placeholder="Ask facts about HDFC schemes (expense ratio, exit load, SIP, ELSS lock-in)..."
+          aria-label="Ask a question"
+        ></textarea>
+        <button class="send-btn" id="send" type="submit" aria-label="Send question">
+          <span class="material-symbols-outlined">send</span>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const FALLBACK_CONFIG = {
+      title: "Dhairya-IQ",
+      disclaimer: "Facts-only. No investment advice.",
+      examples: [
+        "What is the expense ratio of HDFC Flexi Cap Fund Direct Growth?",
+        "What is the mandatory lock-in period for HDFC ELSS Tax Saver Fund?",
+        "What is the exit load and minimum SIP for HDFC Mid Cap Fund?",
+        "Should I invest in HDFC Large Cap Fund?"
+      ],
+      schemes: [
+        { label: "HDFC AMC Overview", prompt: "What is the overview of HDFC Mutual Fund?" },
+        { label: "HDFC Large Cap Fund", prompt: "What is the expense ratio of HDFC Large Cap Fund Direct Growth?" },
+        { label: "HDFC Flexi Cap Fund", prompt: "What is the expense ratio of HDFC Flexi Cap Fund Direct Growth?" },
+        { label: "HDFC ELSS Tax Saver", prompt: "What is the lock-in period for HDFC ELSS Tax Saver?" },
+        { label: "HDFC Mid Cap Fund", prompt: "What is the exit load and minimum SIP for HDFC Mid Cap Fund?" }
+      ],
+      topics: [
+        { label: "Expense Ratios · TER", prompt: "What is the expense ratio of HDFC Flexi Cap Fund?" },
+        { label: "Exit Load · Redemption", prompt: "What is the exit load for HDFC Flexi Cap Fund?" },
+        { label: "Minimum SIP · Lumpsum", prompt: "What is the minimum SIP for HDFC Flexi Cap Fund?" },
+        { label: "ELSS Lock-in · Sec 80C", prompt: "What is the lock-in period for HDFC ELSS Tax Saver?" },
+        { label: "Riskometer · Benchmark", prompt: "What are the riskometer and benchmark for HDFC Flexi Cap Fund?" },
+        { label: "Statement Download", prompt: "How do I download my capital gains statement?" }
+      ]
+    };
+
+    const state = {
+      config: FALLBACK_CONFIG,
+      loading: false
+    };
+
+    const sidebar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("backdrop");
+    const menuBtn = document.getElementById("menuBtn");
+    const schemeList = document.getElementById("schemeList");
+    const topicList = document.getElementById("topicList");
+    const exampleList = document.getElementById("exampleList");
+    const schemeCount = document.getElementById("schemeCount");
+    const brandName = document.getElementById("brandName");
+    const chat = document.getElementById("chat");
+    const form = document.getElementById("composer");
+    const input = document.getElementById("input");
+    const send = document.getElementById("send");
+
+    function esc(value) {
+      return String(value == null ? "" : value).replace(/[&<>"']/g, function (ch) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+      });
+    }
+
+    function safeUrl(value) {
+      if (!value) return "";
+      try {
+        const url = new URL(value, window.location.origin);
+        return (url.protocol === "http:" || url.protocol === "https:") ? url.href : "";
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function icon(name) {
+      return '<span class="material-symbols-outlined">' + esc(name) + "</span>";
+    }
+
+    function renderSidebar() {
+      const config = state.config;
+      document.title = config.title || "Dhairya-IQ";
+      brandName.textContent = config.title || "Dhairya-IQ";
+      schemeCount.textContent = config.schemes.length;
+      schemeList.innerHTML = config.schemes.map(function (item) {
+        return '<button class="side-btn" type="button" data-prompt="' + esc(item.prompt) + '">' + esc(item.label) + "</button>";
+      }).join("");
+      topicList.innerHTML = config.topics.map(function (item) {
+        return '<button class="side-btn" type="button" data-prompt="' + esc(item.prompt) + '">' + esc(item.label) + "</button>";
+      }).join("");
+    }
+
+    function renderExamples() {
+      exampleList.innerHTML = state.config.examples.map(function (question) {
+        return '<button class="example-btn" type="button" data-prompt="' + esc(question) + '">' + esc(question) + "</button>";
+      }).join("");
+    }
+
+    async function loadConfig() {
+      try {
+        const response = await fetch("/api/config", { headers: { Accept: "application/json" } });
+        if (!response.ok) return;
+        const data = await response.json();
+        state.config = {
+          title: data.title || FALLBACK_CONFIG.title,
+          disclaimer: data.disclaimer || FALLBACK_CONFIG.disclaimer,
+          examples: data.examples && data.examples.length ? data.examples : FALLBACK_CONFIG.examples,
+          schemes: data.schemes && data.schemes.length ? data.schemes : FALLBACK_CONFIG.schemes,
+          topics: data.topics && data.topics.length ? data.topics : FALLBACK_CONFIG.topics
+        };
+        renderSidebar();
+        renderExamples();
+      } catch (error) {
+        return;
+      }
+    }
+
+    function openSidebar() {
+      sidebar.classList.add("open");
+      backdrop.classList.add("open");
+      menuBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove("open");
+      backdrop.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+
+    function autoResize() {
+      input.style.height = "auto";
+      input.style.height = Math.min(input.scrollHeight, 128) + "px";
+    }
+
+    function questionBlock(text) {
+      return '<div class="thread-question"><span class="thread-you">You:</span> ' + esc(text) + "</div>";
+    }
+
+    function answerCard(result) {
+      const refused = Boolean(result.refused);
+      const mode = result.mode || "";
+      let title = "Dhairya-IQ Assistant";
+      let sub = "Official source verified · Facts-only";
+
+      if (mode === "guardrail") {
+        title = "Policy Refusal Notice (Facts-Only)";
+        sub = "Dhairya-IQ Assistant · Guardrail";
+      } else if (mode === "not_found") {
+        title = "Source Coverage Notice";
+        sub = "Dhairya-IQ Assistant · No matching official source";
+      } else if (refused) {
+        title = "Verification Notice";
+        sub = "Dhairya-IQ Assistant · Answer not verified";
+      }
+
+      const notice = result.notice
+        ? '<div class="privacy-notice">' + esc(result.notice) + "</div>"
+        : "";
+      const citation = result.citation || "";
+      const url = safeUrl(citation);
+      const source = url
+        ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + esc(citation) + "</a>"
+        : esc(citation);
+      const updated = result.last_updated
+        ? "<span>Last updated from sources: " + esc(result.last_updated) + "</span>"
+        : "";
+      const answer = esc(result.answer || "").replace(/\n/g, "<br>");
+
+      return (
+        '<div class="answer-card' + (refused ? " refusal-card" : "") + '">' +
+          '<div class="assistant-head">' +
+            '<div class="assistant-icon">' + icon("psychology") + "</div>" +
+            "<div>" +
+              '<div class="assistant-name">' + esc(title) + "</div>" +
+              '<div class="assistant-sub">' + esc(sub) + "</div>" +
+            "</div>" +
+          "</div>" +
+          notice +
+          '<div class="' + (refused ? "refusal-bubble" : "answer-bubble") + '">' + answer + "</div>" +
+          '<div class="answer-meta">' +
+            "<div><span class=\"source\">Source:</span> " + source + "</div>" +
+            updated +
+          "</div>" +
+        "</div>"
+      );
+    }
+
+    function addResult(question, result) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = questionBlock(result.query || question) + answerCard(result);
+      chat.appendChild(wrapper);
+    }
+
+    function addError(question, message) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML =
+        questionBlock(question) +
+        '<div class="error-card">' +
+          '<div class="error-title">Lookup failed</div>' +
+          '<div class="error-text">' + esc(message) + "</div>" +
+        "</div>";
+      chat.appendChild(wrapper);
+    }
+
+    function addPending() {
+      const card = document.createElement("div");
+      card.className = "pending-card";
+      card.innerHTML = '<div class="spinner" aria-hidden="true"></div><span>Searching official sources...</span>';
+      chat.appendChild(card);
+      return card;
+    }
+
+    function errorMessage(data, status) {
+      if (data && typeof data.detail === "string" && data.detail) return data.detail;
+      if (data && Array.isArray(data.detail)) return "Please check your question and try again.";
+      return "Could not complete the lookup. Please try again.";
+    }
+
+    async function ask(question) {
+      const text = String(question || "").trim();
+      if (!text || state.loading) return;
+
+      state.loading = true;
+      send.disabled = true;
+      input.value = "";
+      autoResize();
+      const pending = addPending();
+      closeSidebar();
+      scrollToBottom();
+
+      try {
+        const response = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ query: text })
+        });
+        let data = {};
+        try {
+          data = await response.json();
+        } catch (error) {
+          data = {};
+        }
+        if (!response.ok) {
+          throw new Error(errorMessage(data, response.status));
+        }
+        pending.remove();
+        addResult(text, data);
+      } catch (error) {
+        pending.remove();
+        const message = error && error.message ? error.message : "Could not reach the assistant. Check your connection and try again.";
+        addError(text, message);
+      } finally {
+        state.loading = false;
+        send.disabled = false;
+        input.focus();
+        scrollToBottom();
+      }
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      ask(input.value);
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        ask(input.value);
+      }
+    });
+
+    input.addEventListener("input", autoResize);
+
+    document.addEventListener("click", function (event) {
+      const trigger = event.target.closest("[data-prompt]");
+      if (trigger) {
+        ask(trigger.getAttribute("data-prompt"));
+      }
+    });
+
+    menuBtn.addEventListener("click", function () {
+      if (sidebar.classList.contains("open")) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    });
+
+    backdrop.addEventListener("click", closeSidebar);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeSidebar();
+    });
+
+    renderSidebar();
+    renderExamples();
+    loadConfig();
+    autoResize();
+    input.focus();
+  </script>
+</body>
+</html>

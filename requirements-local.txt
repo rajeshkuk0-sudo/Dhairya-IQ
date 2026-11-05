@@ -1,0 +1,11 @@
+-r requirements.txt
+streamlit
+beautifulsoup4
+trafilatura
+tenacity
+sentence-transformers
+chromadb
+pandas
+pytest
+uvicorn
+onnx
