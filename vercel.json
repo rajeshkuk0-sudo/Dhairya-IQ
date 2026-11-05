@@ -4,12 +4,7 @@
   "functions": {
     "main.py": {
       "maxDuration": 300,
-      "includeFiles": [
-        "config/**",
-        "data/vercel/**",
-        "models/minilm-onnx/**",
-        "public/**"
-      ]
+      "includeFiles": "{config,data/vercel,models/minilm-onnx,public}/**"
     }
   }
 }
